@@ -31,7 +31,7 @@ const server = http.createServer((req, res) => {
       proxyRes.pipe(res);
     });
 
-    req.headers = {...headers, host: "k24a1.fleepy.tv"};
+    proxyReq.headers.host = "k24a1.fleepy.tv";
 
     req.pipe(proxyReq);
     // fetch
