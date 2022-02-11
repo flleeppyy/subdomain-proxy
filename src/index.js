@@ -1,6 +1,3 @@
-// Create a simple http server
-// and when a request"s Host header is equal to "hehhoo.fleepy.tv", fetch a webpage and proxy it to the user
-
 const http = require("http");
 const url = require("url");
 const fs = require("fs");
