@@ -15,23 +15,21 @@ const server = http.createServer((req, res) => {
     headers.cookie = cookies + "; __test=325c6b5dfce19c75b820329c6056d1ea";
     headers.host = "k24a1.42web.io";
 
-    // http.request
-    const options = {
+    const proxyReq = http.request({
       host: "k24a1.42web.io",
       port: 80,
       path: path,
       method: req.method,
       headers: headers,
-    };
-
-    const proxyReq = http.request(options, (proxyRes) => {
+    }, (proxyRes) => {
       Object.keys(proxyRes.headers).forEach((key) => {
         res.setHeader(key, proxyRes.headers[key]);
       });
+      console.log(res.req);
       proxyRes.pipe(res);
     });
-
-    proxyReq.setHeader("host","k24a1.fleepy.tv");
+    
+    
 
     req.pipe(proxyReq);
     // fetch
