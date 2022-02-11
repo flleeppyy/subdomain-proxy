@@ -14,6 +14,7 @@ const server = http.createServer((req, res) => {
     }
     headers.cookie = cookies + "; __test=325c6b5dfce19c75b820329c6056d1ea";
     headers.host = "k24a1.42web.io";
+    headers["user-agent"] = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:96.0) Gecko/20100101 Firefox/96.0"
     headers["Upgrade-Insecure-Requests"] = "0";
 
     const proxyReq = http.request({
