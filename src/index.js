@@ -14,7 +14,7 @@ const server = http.createServer((req, res) => {
     }
     headers.cookie = cookies + "; __test=325c6b5dfce19c75b820329c6056d1ea";
     headers.host = "k24a1.42web.io";
-    headers["Upgrade-Insecure-Requests"] = 0;
+    headers["Upgrade-Insecure-Requests"] = "0";
 
     const proxyReq = http.request({
       host: "k24a1.42web.io",
@@ -26,7 +26,6 @@ const server = http.createServer((req, res) => {
       Object.keys(proxyRes.headers).forEach((key) => {
         res.setHeader(key, proxyRes.headers[key]);
       });
-      console.log(res.req);
       proxyRes.pipe(res);
     });
     
